@@ -13,7 +13,7 @@ import 'types/camera_exception.dart';
 import 'types/features.dart';
 import 'web/flutter_qr_stub.dart'
 // ignore: uri_does_not_exist
-    if (dart.library.html) 'web/flutter_qr_web.dart';
+if (dart.library.html) 'web/flutter_qr_web.dart';
 
 typedef QRViewCreatedCallback = void Function(QRViewController);
 typedef PermissionSetCallback = void Function(QRViewController, bool);
@@ -65,7 +65,7 @@ class _QRViewState extends State<QRView> {
   void initState() {
     super.initState();
     _observer = LifecycleEventHandler(resumeCallBack: updateDimensions);
-    WidgetsBinding.instance!.addObserver(_observer);
+    WidgetsBinding.instance.addObserver(_observer);
   }
 
   @override
@@ -83,7 +83,7 @@ class _QRViewState extends State<QRView> {
   @override
   void dispose() {
     super.dispose();
-    WidgetsBinding.instance!.removeObserver(_observer);
+    WidgetsBinding.instance.removeObserver(_observer);
   }
 
   Future<void> updateDimensions() async {
@@ -127,7 +127,7 @@ class _QRViewState extends State<QRView> {
             viewType: 'net.touchcapture.qr.flutterqr/qrview',
             onPlatformViewCreated: _onPlatformViewCreated,
             creationParams:
-                _QrCameraSettings(cameraFacing: widget.cameraFacing).toMap(),
+            _QrCameraSettings(cameraFacing: widget.cameraFacing).toMap(),
             creationParamsCodec: const StandardMessageCodec(),
           );
           break;
@@ -136,7 +136,7 @@ class _QRViewState extends State<QRView> {
             viewType: 'net.touchcapture.qr.flutterqr/qrview',
             onPlatformViewCreated: _onPlatformViewCreated,
             creationParams:
-                _QrCameraSettings(cameraFacing: widget.cameraFacing).toMap(),
+            _QrCameraSettings(cameraFacing: widget.cameraFacing).toMap(),
             creationParamsCodec: const StandardMessageCodec(),
           );
           break;
@@ -217,7 +217,7 @@ class QRViewController {
   final MethodChannel _channel;
   final CameraFacing _cameraFacing;
   final StreamController<Barcode> _scanUpdateController =
-      StreamController<Barcode>();
+  StreamController<Barcode>();
 
   Stream<Barcode> get scannedDataStream => _scanUpdateController.stream;
 
@@ -308,7 +308,7 @@ class QRViewController {
   Future<SystemFeatures> getSystemFeatures() async {
     try {
       var features =
-          await _channel.invokeMapMethod<String, dynamic>('getSystemFeatures');
+      await _channel.invokeMapMethod<String, dynamic>('getSystemFeatures');
       if (features != null) {
         return SystemFeatures.fromJson(features);
       }
