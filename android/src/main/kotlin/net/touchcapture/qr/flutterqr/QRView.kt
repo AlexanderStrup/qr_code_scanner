@@ -213,7 +213,7 @@ class QRView(private val context: Context, messenger: BinaryMessenger, private v
                 allowedBarcodeTypes.add(BarcodeFormat.values()[it])
             }
         } catch (e: java.lang.Exception) {
-            result.error(null, null, null)
+            result.error("", "", "")
         }
 
         barcodeView?.decodeContinuous(
@@ -307,7 +307,7 @@ class QRView(private val context: Context, messenger: BinaryMessenger, private v
         }
     }
 
-    override fun onRequestPermissionsResult( requestCode: Int,
+    override fun onRequestPermissionsResult(requestCode: Int,
                                              permissions: Array<out String>?,
                                              grantResults: IntArray): Boolean {
         if(requestCode == Shared.CAMERA_REQUEST_ID + this.id) {
